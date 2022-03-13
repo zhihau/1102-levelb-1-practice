@@ -8,15 +8,10 @@
     <table width="100%">
     	<tbody><tr>
         	<td width="45%"><?=$DB->upload;?></td><td>
-               <input type="file" name="img">
+               <input type="text" name="text" id="">
             </td>
             </tr>
-            <tr>
-            <td width="45%">標題區替代文字：</td><td >
-                <input type="text" name="text" >
-            </td>
-            <input type="hidden" name="sh" value="0">
-                    </tr>
+            
     </tbody></table>
            <table style="margin-top:40px; width:70%;">
      <tbody><tr>

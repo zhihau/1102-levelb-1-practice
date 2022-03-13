@@ -1,10 +1,55 @@
 <div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
-<?=include "marquee.php";?>
+<?php include_once "marquee.php";?>
                     <div style="height:32px; display:block;"></div>
                                         <!--正中央-->
+										<span class="t botli">更多消息顯示區
+								
+
+														</span>
+														<ul class="ssaa" style="list-style-type:decimal;">
+<?php
+$all=$News->math('count','*',['sh'=>1]);
+$div=5;
+$pages=ceil($all/$div);
+$now=$_GET['p']??1;
+$start=($now-1)*$div;
+
+	$rs=$News->all(['sh'=>1]," limit $start,$div");
+foreach($rs as $k=>$r){
+	?>
+<li class="sswww"><?=mb_substr($r['text'],0,20);?>,,,
+<div class="all" style="display:none"><?=$r['text']?></div>
+</li>
+	<?php
+}
+?>
+                            	                            </ul>
+
                         <div style="text-align:center;">
-    <a class="bl" style="font-size:30px;" href="?do=meg&p=0">&lt;&nbsp;</a>
-        <a class="bl" style="font-size:30px;" href="?do=meg&p=0">&nbsp;&gt;</a>
+						
+						<?php
+if(($now-1)>0){
+    $pre=$now-1;
+	?>
+	<a class="bl" style="font-size:30px;" href="?do=news&p=<?=$pre?>">&lt;&nbsp;</a>
+	<?php
+}
+for($i=1;$i<=$pages;$i++){
+    $s=($i==$now)?"40px":"30px";
+	?>
+	<a class="bl" style="font-size:<?=$s?>;" href='?do=news&p=<?=$i?>'>&nbsp;<?=$i?></a>
+	<?php
+}
+if(($now+1)<=$pages){
+    $next=$now+1;
+    
+	?>
+	<a class="bl" style="font-size:30px;" href="?do=news&p=<?=$next?>">&nbsp;&gt;</a>
+	<?php
+}
+						?>
+    
+      
     </div>
 	                </div>
                 <div id="alt" style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
@@ -23,29 +68,3 @@
 							}
 						)
                         </script>
-                                 <div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
-                	<!--右邊-->   
-                	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;?do=admin&#39;)">回後台管理</button>
-                	<div style="width:89%; height:480px;" class="dbor">
-                    	<span class="t botli">校園映象區</span>
-						                        <script>
-                        	var nowpage=0,num=0;
-							function pp(x)
-							{
-								var s,t;
-								if(x==1&&nowpage-1>=0)
-								{nowpage--;}
-								if(x==2&&(nowpage+1)*3<=num*1+3)
-								{nowpage++;}
-								$(".im").hide()
-								for(s=0;s<=2;s++)
-								{
-									t=s*1+nowpage*1;
-									$("#ssaa"+t).show()
-								}
-							}
-							pp(1)
-                        </script>
-                    </div>
-                </div>
-                            </div>

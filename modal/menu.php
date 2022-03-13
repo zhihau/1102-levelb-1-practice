@@ -2,21 +2,21 @@
                                    <?php
                                    include_once "../base.php"?>      
                           
-                                    <p class="t cent botli">新增<?=$DB->upload;?></p>
+                                    <p class="t cent botli">新增主選單</p>
         <form method="post" action="api/add.php?do=<?=$DB->table;?>" enctype="multipart/form-data">
             
     <table width="100%">
-    	<tbody><tr>
-        	<td width="45%"><?=$DB->upload;?></td><td>
-               <input type="file" name="img">
+    	<tbody>
+            <tr>
+        	<td width="45%">主選單名稱</td><td>
+                <input type="text" name="name" id="">
             </td>
             </tr>
             <tr>
-            <td width="45%">標題區替代文字：</td><td >
-                <input type="text" name="text" >
+        	<td width="45%">主選單連結</td><td>
+                <input type="text" name="href" id="">
             </td>
-            <input type="hidden" name="sh" value="0">
-                    </tr>
+            </tr>
     </tbody></table>
            <table style="margin-top:40px; width:70%;">
      <tbody><tr>

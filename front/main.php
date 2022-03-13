@@ -1,9 +1,17 @@
 <div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
-                	                   <?=include "marquee.php";?>
+                	                   <!-- marqeee -->
+									   <?php include_once "marquee.php";?>
                     <div style="height:32px; display:block;"></div>
                                         <!--正中央-->
                                         <script>
                     	var lin=new Array();
+						<?php
+							$rs=$Mvim->all(['sh'=>1]);
+							foreach($rs as $r){
+								echo "lin.push('../img/{$r['img']}');";
+								
+							}
+							?>
 						var now=0;
 						if(lin.length>1)
 						{
@@ -21,13 +29,32 @@
                     </script>
                 	<div style="width:100%; padding:2px; height:290px;">
                     	<div id="mwww" loop="true" style="width:100%; height:100%;">
-                        	                                <div style="width:99%; height:100%; position:relative;" class="cent">沒有資料</div>
-                                                        </div>
+                        	                                <div style="width:99%; height:100%; position:relative;" class="cent">
+															
+														</div>
+                        </div>
                     </div>
                 	<div style="width:95%; padding:2px; height:190px; margin-top:10px; padding:5px 10px 5px 10px; border:#0C3 dashed 3px; position:relative;">
                     		<span class="t botli">最新消息區
-                            								</span>
+								<?php
+								if($News->math('count','*',['sh'=>1])>5){
+?>
+								<div style="float:right"><a href="?do=news">More...</a></div>
+<?php
+								}
+								?>
+														</span>
                             <ul class="ssaa" style="list-style-type:decimal;">
+<?php
+$rs=$News->all(['sh'=>1]," limit 5");
+foreach($rs as $k=>$r){
+	?>
+<li><?=mb_substr($r['text'],0,20);?>,,,
+<div class="all" style="display:none"><?=$r['text']?></div>
+</li>
+	<?php
+}
+?>
                             	                            </ul>
         			<div id="altt" style="position: absolute; width: 350px; min-height: 100px; background-color: rgb(255, 255, 204); top: 50px; left: 130px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
                     	<script>
@@ -47,4 +74,3 @@
                         </script>
                     </div>
                 	                </div>
-                

@@ -2,21 +2,26 @@
                                    <?php
                                    include_once "../base.php"?>      
                           
-                                    <p class="t cent botli">新增<?=$DB->upload;?></p>
+                                    <p class="t cent botli">新增管理者<?=$DB->upload;?></p>
         <form method="post" action="api/add.php?do=<?=$DB->table;?>" enctype="multipart/form-data">
             
     <table width="100%">
-    	<tbody><tr>
+    	<tbody>
+            <tr>
         	<td width="45%"><?=$DB->upload;?></td><td>
-               <input type="file" name="img">
+                <input type="text" name="acc" id="">
             </td>
             </tr>
             <tr>
-            <td width="45%">標題區替代文字：</td><td >
-                <input type="text" name="text" >
+        	<td width="45%">密碼</td><td>
+                <input type="password" name="pw" id="">
             </td>
-            <input type="hidden" name="sh" value="0">
-                    </tr>
+            </tr>
+            <tr>
+        	<td width="45%">確認密碼</td><td>
+                <input type="password"  id="">
+            </td>
+            </tr>
     </tbody></table>
            <table style="margin-top:40px; width:70%;">
      <tbody><tr>
